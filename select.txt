@@ -1,0 +1,35 @@
+-- вывести список заказов вместе с количеством товаров в данных заказах
+SELECT orders.id as order_number, count(product_id) as count_products 
+FROM orders  JOIN orders_products ON orders.id = orders_products.order_id 
+GROUP BY orders.id
+
+-- вывести все заказы, в которых больше 10 товаров
+SELECT orders.id
+FROM orders  JOIN orders_products ON orders.id = orders_products.order_id
+GROUP BY orders.id
+HAVING count(product_id) > 10
+
+-- или
+SELECT orders.id
+FROM orders  
+JOIN orders_products ON orders.id = orders_products.order_id
+JOIN products ON orders_products.product_id = products.id
+GROUP BY orders.id
+HAVING count(product_id) > 10
+
+--вывести два любых заказа, у которых максимальное количество общих товаров
+!!!! TO DO
+SELECT t1.id, t2.id, COUNT(*) AS count
+  FROM orders AS t1
+  JOIN (
+    SELECT DISTINCT order_id, product_id
+      FROM orders_products 
+  ) AS s1 ON s1.order_id = t1.id
+  JOIN (
+    SELECT DISTINCT order_id, product_id
+      FROM orders_products 
+  ) AS s2 ON s2.product_id = s1.product_id AND s2.order_id > s1.order_id
+  JOIN orders AS t2 ON t2.id = s2.order_id
+  GROUP BY t1.id, t2.id
+  ORDER BY count
+  LIMIT 1

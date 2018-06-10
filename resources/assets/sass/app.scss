@@ -1,0 +1,52 @@
+// // Fonts
+// @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+// // Variables
+// @import "variables";
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+// .navbar-laravel {
+//     background-color: #fff;
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+// }
+.image-card {
+    height: 200px;
+    object-fit: contain;
+}
+
+.row-card {
+    margin-bottom: 10px;
+}
+
+.main-title {
+    margin: 20px 0px 40px 0px;
+}
+
+.card-flex {
+    &.col-3 {
+        max-width: 23%;
+        margin: 10px;
+    }
+    .card-body {
+        display: flex;
+        flex-direction: column;
+    }
+    .text-desc {
+        flex: 1 1 auto;
+        height: 100%;
+    }
+}
+
+#result {
+    background: #ddd;
+    min-height: 100px;
+}
+
+.hidden {
+    display: none;
+}
+
+// .text-desc {
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     height: 100px;
+// }
