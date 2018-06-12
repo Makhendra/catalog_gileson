@@ -2,7 +2,7 @@
 
 @section('header')
 <div class="row main-title">
-    <div class="col-6 text-left "> <h2>Тестовый каталог</h2></div>
+    <div class="col-6 text-left "> <a href="/" class="link-main"><h2>Тестовый каталог</h2></a></div>
     <div class="col-6 text-right">
       <form method="POST" action="/" id="search">
         {!! csrf_field() !!}

@@ -10492,3 +10492,11 @@ a.text-dark:focus {
       flex-wrap: wrap;
 }
 
+.link-main,
+.link-main:hover,
+.link-main:visited {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+}
+

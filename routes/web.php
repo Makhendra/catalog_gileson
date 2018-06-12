@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'ProductController@index');
+Route::get('/{category}', 'ProductController@index');
 Route::post('/', ['as' => 'search','uses' => 'ProductController@search']);

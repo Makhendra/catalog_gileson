@@ -7,6 +7,10 @@
  - php artisan db:seed
  - php artisan serve
 
+ для крона:
+ crontab -e
+ * * * * * php /path_to_project/artisan schedule:run >>/dev/null 2>&1
+
 Ответ на первое задание в корне, файл select.txt
 
 Задание №1
