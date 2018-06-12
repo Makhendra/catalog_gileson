@@ -9,7 +9,10 @@
         <title>Тестовый каталог</title>
     </head>
     <body>
-        @yield('content')
+        <div class="container">
+            @yield('header')
+            @yield('content')
+        </div>
         <script src="/js/app.js"></script>
     </body>
 </html>

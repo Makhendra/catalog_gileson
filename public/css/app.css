@@ -10415,18 +10415,25 @@ a.text-dark:focus {
   height: 200px;
   -o-object-fit: contain;
      object-fit: contain;
+  -o-object-position: top;
+     object-position: top;
+}
+
+.image-card.min {
+  height: 150px;
 }
 
 .row-card {
   margin-bottom: 10px;
+  padding: 10px;
 }
 
 .main-title {
-  margin: 20px 0px 40px 0px;
+  margin: 20px 0px 0px 0px;
 }
 
-.card-flex.col-3 {
-  max-width: 23%;
+.card-flex {
+  width: 23%;
   margin: 10px;
 }
 
@@ -10449,10 +10456,39 @@ a.text-dark:focus {
 
 #result {
   background: #ddd;
-  min-height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .hidden {
   display: none;
+}
+
+.close-search {
+  position: relative;
+}
+
+.close-search:before {
+  content: 'X';
+  position: absolute;
+  right: 5px;
+  color: red;
+  cursor: pointer;
+}
+
+.categories {
+  padding: 5px;
+}
+
+.categories .navbar-nav {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 

@@ -20,17 +20,59 @@ require('./bootstrap');
 //     el: '#app'
 // });
 
+function wrapElemement(elem) {
+    var card = document.createElement('div');
+    card.classList = 'card card-flex';
+
+    var img = document.createElement('img');
+    img.src = elem.image;
+    img.alt = elem.title;
+    img.classList = 'card-img-top image-card min';
+
+    var card_body = document.createElement('div');
+    card_body.classList = 'card-body';
+
+    var title = document.createElement('a');
+    title.classList = 'card-title';
+    title.innerText = elem.title;
+    title.target = '_blanck';
+    title.href = elem.url;
+
+    var desc = document.createElement('p');
+    desc.classList = 'card-text text-desc';
+    desc.innerText = elem.description;
+
+    var btn = document.createElement('a');
+    btn.target = '_blanck';
+    btn.href = elem.url;
+    btn.classList = 'btn btn-primary';
+    btn.innerText = 'Подробнее';
+
+    card_body.appendChild(title);
+    // card_body.appendChild(desc);
+    // card_body.appendChild(btn);
+
+    card.appendChild(img);
+    card.appendChild(card_body);
+
+    return card;
+}
+
 $('#search').submit(function (event) {
     event.preventDefault();
+
+    var result_div = $('#result');
+    result_div.empty();
+
+    var search_text = $.trim($('#input-search').val());
+    if (!$('#input-search').val()) {
+        return false;
+    }
 
     var form = $(this);
     var action = form.attr('action');
     var search = new FormData();
-    var result_div = form.find('.result');
-    var serialize = form.serializeArray();
-    serialize.forEach(function (item, i, arr) {
-        search.append(item.name, item.value);
-    });
+    search.append('search', search_text);
 
     $.ajax({
         method: "POST",
@@ -43,7 +85,11 @@ $('#search').submit(function (event) {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function (response) {
-            console.log(response);
+            $('.close-search').removeClass('hidden');
+            response.forEach(elem => {
+                elem = wrapElemement(elem);
+                result_div.append(elem);
+            });
         },
         error: function (response) {
             console.log(response);
@@ -51,4 +97,9 @@ $('#search').submit(function (event) {
     });
 
     return false;
+});
+
+$('.close-search').click(function () {
+    $('#result').empty();
+    $('.close-search').addClass('hidden');
 });

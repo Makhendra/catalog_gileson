@@ -1,12 +1,11 @@
 # catalog_gileson
-
 Запуск:
-    npm install
-    заполнить .env
-    php artisan key:generate
-    php artisan migrate
-    php artisan db:seed
-    php artisan serve
+ - npm install
+ - заполнить .env
+ - php artisan key:generate
+ - php artisan migrate
+ - php artisan db:seed
+ - php artisan serve
 
 Ответ на первое задание в корне, файл select.txt
 
