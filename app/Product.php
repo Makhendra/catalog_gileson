@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     public $timestamps = false;
+    protected $fillable = ['id',  'title', 'image', 'description', 'first_invoice', 'url', 'price', 'amount'];
     
     public function categories()
     {
