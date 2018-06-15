@@ -29,7 +29,20 @@ SELECT t1.id, t2.id, COUNT(*) AS count
     SELECT DISTINCT order_id, product_id
       FROM orders_products 
   ) AS s2 ON s2.product_id = s1.product_id AND s2.order_id > s1.order_id
-  JOIN orders AS t2 ON t2.id = s2.order_id
+  // JOIN orders AS t2 ON t2.id = s2.order_id
   GROUP BY t1.id, t2.id
   ORDER BY count
   LIMIT 1
+
+
+
+// SELECT 
+//     products.*,
+//     sum(offers.sales) AS total_sales
+// FROM products 
+//     JOIN product_offer ON products.id = product_offer.product_id 
+//     JOIN offers ON product_offer.offer_id = offers.id 
+// GROUP BY 
+//     products.id
+// ORDER BY total_sales DESC
+// limit 20

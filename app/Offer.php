@@ -8,8 +8,8 @@ class Offer extends Model
 {
     public $timestamps = false;
     
-    public function products()
+    public function product()
     {
-        return $this->belongsToMany('App\Product', 'product_offer', 'category_id', 'product_id');
+        return $this->belongsTo('App\Product');
     }
 }

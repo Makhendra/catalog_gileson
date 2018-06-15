@@ -15,14 +15,18 @@ class CreateRelationships extends Migration
     {
         Schema::create('product_category', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id');
-            $table->integer('category_id');
+            $table->integer('product_id')->unsigned();
+            $table->integer('category_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
         });
 
         Schema::create('product_offer', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('product_id');
-            $table->integer('offer_id');
+            $table->integer('product_id')->unsigned();
+            $table->integer('offer_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
         });
     }
 
